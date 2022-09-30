@@ -1,0 +1,64 @@
+<App@MDFloatLayout>:
+
+    MDBoxLayout:
+        orientation: "vertical"
+
+    MDTopAppBar:
+        title: "cadastro"
+
+        pos_hint: {"top": 1}
+        elevation: 15
+        left_action_items:[["arrow-left", lambda x: root.callback()]]
+
+    Image:
+        source: "image/add-group.png"
+        size_hint:(0.2, 0.2)
+        pos_hint: {"center_x": 0.5, "center_y": 0.75}
+
+    MDLabel:
+        id: label
+        text: "Olá"
+        font_style: "H5"
+        bold: True
+        halign: "center"
+        pos_hint: {"center_x": 0.5, "center_y": 0.6}
+
+    MDLabel:
+        text: "Insira os dados para se cadastar"
+        font_style: "Caption"
+        halign: "center"
+        pos_hint: {"center_x": 0.5, "center_y": 0.55}
+
+
+    MDTextField:
+        id: login
+        pos_hint:{"center_x":0.5, "center_y":0.4}
+        size_hint_x:0.5
+        icon_right: "user"
+        hint_text:"Usuario"
+
+
+    MDTextField:
+        id: senha
+        pos_hint:{"center_x":0.5, "center_y":0.3}
+        size_hint_x:0.5
+        hint_text:"Senha"
+        icon_right: "lock"
+        password:True
+
+
+    MDFillRoundFlatButton:
+        id: "botao-entrar"
+        text: "Entrar"
+        on_press: app.submit()
+        elevation:10
+        font_size: 20
+        pos_hint:{"center_x":0.5, "center_y":0.2}
+        size_hint_x:0.5
+
+    MDTextButton:
+        text:"Esqueci a senha"
+        font_size: 14
+        pos_hint:{"center_x":0.5, "center_y":0.08}
+
+App
