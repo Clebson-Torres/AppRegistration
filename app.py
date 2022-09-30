@@ -34,7 +34,7 @@ class App(MDApp):
         con.commit()
         con.close()
 
-    # def login(self):
+     def login(self):
     #     if self.root.ids.login.text == "clebs" and self.root.ids.senha.text =="1234":
     #         self.root.ids.label.text = f"Seja bem vindo {self.root.ids.login.text}"
     #     else:
