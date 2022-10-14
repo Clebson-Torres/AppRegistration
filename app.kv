@@ -1,14 +1,96 @@
-<App@MDFloatLayout>:
+Windowmanager:
+    TelaLogin:
+    TelaCadastro:
+    TelaUsuario:
+
+
+<TelaLogin>:
+    name: "tela1"
+
+    MDBoxLayout:
+        orientation: "vertical"
+
+
+    MDTopAppBar:
+        title: "Tela de Login"
+        md_bg_color: app.theme_cls.primary_color
+        pos_hint: {"top": 1}
+        elevation: 15
+
+    Image:
+        source: "image/add-group.png"
+        size_hint:(0.2, 0.2)
+        pos_hint: {"center_x": 0.5, "center_y": 0.75}
+
+    MDLabel:
+        id: label
+        text: "Olá"
+        font_style: "H5"
+        bold: True
+        halign: "center"
+        pos_hint: {"center_x": 0.5, "center_y": 0.6}
+
+    MDLabel:
+        text: "Insira os dados para logar"
+        font_style: "Caption"
+        halign: "center"
+        pos_hint: {"center_x": 0.5, "center_y": 0.55}
+
+    MDTextField:
+        id: login2
+        pos_hint:{"center_x":0.5, "center_y":0.4}
+        size_hint_x:0.5
+        icon_right: "account"
+        mode: "fill"
+        hint_text:"nome de Usuario"
+
+    MDTextField:
+        id: senha2
+        pos_hint:{"center_x":0.5, "center_y":0.3}
+        size_hint_x:0.5
+        hint_text:"Senha"
+        mode: "fill"
+        icon_right: "lock"
+        password:True
+
+    MDFillRoundFlatButton:
+        id: "botao-entrar"
+        text: "Entrar"
+        on_release: root.login()
+        elevation:10
+        font_size: 20
+        pos_hint:{"center_x":0.5, "center_y":0.2}
+        size_hint_x:0.4
+
+    MDFillRoundFlatButton:
+        id: "cadastro1"
+        text: "Novo usuario"
+        on_release:
+            app.root.current = "tela2"
+            root.manager.transition.direction = "left"
+        elevation:10
+        font_size: 20
+        pos_hint:{"center_x":0.5, "center_y":0.1}
+        size_hint_x:0.4
+
+    MDTextButton:
+        text:"Esqueci a senha"
+        font_size: 14
+        pos_hint:{"center_x":0.5, "center_y":0.04}
+
+
+<TelaCadastro>:
+    name: "tela2"
 
     MDBoxLayout:
         orientation: "vertical"
 
     MDTopAppBar:
         title: "cadastro"
-
+        md_bg_color: app.theme_cls.primary_color
         pos_hint: {"top": 1}
         elevation: 15
-        left_action_items:[["arrow-left", lambda x: root.callback()]]
+
 
     Image:
         source: "image/add-group.png"
@@ -31,34 +113,76 @@
 
 
     MDTextField:
-        id: login
+        id: login1
         pos_hint:{"center_x":0.5, "center_y":0.4}
         size_hint_x:0.5
-        icon_right: "user"
-        hint_text:"Usuario"
+        mode: "fill"
+        icon_right: "account"
+        hint_text:"email"
 
 
     MDTextField:
-        id: senha
+        id: senha1
         pos_hint:{"center_x":0.5, "center_y":0.3}
         size_hint_x:0.5
         hint_text:"Senha"
-        icon_right: "lock"
         password:True
+        mode: "fill"
+        icon_right: "eye-off"
 
 
     MDFillRoundFlatButton:
-        id: "botao-entrar"
-        text: "Entrar"
-        on_press: app.submit()
+        id: botao-cadastrar
+        text: "Cadastrar"
+        on_press: root.submit()
+        on_release: app.show_alert_dialog()
         elevation:10
         font_size: 20
         pos_hint:{"center_x":0.5, "center_y":0.2}
         size_hint_x:0.5
 
-    MDTextButton:
-        text:"Esqueci a senha"
-        font_size: 14
-        pos_hint:{"center_x":0.5, "center_y":0.08}
+    MDFillRoundFlatButton:
+        id: "voltar"
+        text: "tela de login"
+        on_release:
+            app.root.current = "tela1"
+            root.manager.transition.direction = "right"
+        elevation:10
+        font_size: 20
+        pos_hint:{"center_x":0.5, "center_y":0.1}
+        size_hint_x:0.5
 
-App
+
+
+<TelaUsuario>:
+    name: "TelaUsuario"
+
+
+    MDBoxLayout:
+        orientation: "vertical"
+
+    MDTopAppBar:
+        title: "Tela principal"
+        md_bg_color: app.theme_cls.primary_color
+        pos_hint: {"top": 1}
+        elevation: 15
+
+
+    MDLabel:
+        id: label
+        text: "Olá"
+        font_style: "H5"
+        bold: True
+        halign: "center"
+        pos_hint: {"center_x": 0.5, "center_y": 0.6}
+
+    MDFillRoundFlatButton:
+        id: "voltar-login"
+        text: "voltar"
+        on_release:
+            app.root.current = "tela1"
+            root.manager.transition.direction = "right"
+        elevation:10
+        font_size: 20
+        pos_hint:{"center_x":0.5, "center_y":0.2}
+        size_hint_x:0.5
